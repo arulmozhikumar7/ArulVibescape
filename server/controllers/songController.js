@@ -52,3 +52,13 @@ exports.createSong = (req, res) => {
     }
   });
 };
+
+exports.getAllSongs = async (req, res) => {
+  try {
+    const songs = await Songs.find();
+    res.status(200).json(songs);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
